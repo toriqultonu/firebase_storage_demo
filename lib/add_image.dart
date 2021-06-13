@@ -16,8 +16,8 @@ class _AddImageState extends State<AddImage> {
   bool uploading = false;
   double val = 0;
 
-  late CollectionReference imgRef;
-  late firebase_storage.Reference ref;
+   CollectionReference imgRef;
+   firebase_storage.Reference ref;
 
   List<File> _image = [];
   final picker = ImagePicker();
@@ -63,9 +63,9 @@ class _AddImageState extends State<AddImage> {
     
     final pickerFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
-      _image.add(File(pickerFile!.path));
+      _image.add(File(pickerFile.path));
     });
-    if(pickerFile!.path == null) retrieveLostData();
+    if(pickerFile.path == null) retrieveLostData();
   }
 
   Future<void> retrieveLostData() async {
@@ -75,7 +75,7 @@ class _AddImageState extends State<AddImage> {
     }
     if(response.file != null){
       setState(() {
-        _image.add(File(response.file!.path));
+        _image.add(File(response.file.path));
       });
     }
     else{
